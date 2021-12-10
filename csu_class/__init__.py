@@ -17,11 +17,7 @@ csu_class = on_command("csu_class", priority=5)
 async def _(bot: Bot, event: PrivateMessageEvent, state: T_State):
     name = state["name"]
 
-    fp = open(
-        os.path.join(os.path.dirname(__file__), "student_info.json"),
-        "r",
-        encoding="utf-8",
-    )
+    fp = open("student_info.json", "r", encoding="utf-8")
     student_info_json = fp.read()
     fp.close()
     student_info = json.loads(student_info_json)
@@ -51,11 +47,7 @@ async def _(bot: Bot, event: PrivateMessageEvent, state: T_State):
     if not id or not name:
         return
 
-    fp = open(
-        os.path.join(os.path.dirname(__file__), "student_info.json"),
-        "r",
-        encoding="utf-8",
-    )
+    fp = open("student_info.json", "r", encoding="utf-8")
     student_info_json = fp.read()
     fp.close()
     student_info = json.loads(student_info_json)

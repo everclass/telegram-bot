@@ -87,7 +87,7 @@ def get_table(class_info):
 
 def get_photo(class_info_table):
     space = 5
-    font = ImageFont.truetype("simhei.ttf", 16, encoding="utf-8")
+    font = ImageFont.truetype("wqy-zenhei-mono.ttf", 16, encoding="utf-8")
     im = Image.new("RGB", (10, 10), (0, 0, 0, 0))
     draw = ImageDraw.Draw(im, "RGB")
     # 根据插入图片中的文字内容和字体信息，来确定图片的最终大小
