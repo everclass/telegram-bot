@@ -6,10 +6,8 @@ from bs4 import BeautifulSoup
 from PIL import Image, ImageDraw, ImageFont
 from prettytable import ALL, PrettyTable
 
-from .config import *
 
-
-def get_data(id, student_info):
+def get_data(id, student_info, semester):
     data = {
         "type": "xs0101",
         "xnxq01id": semester,
@@ -18,7 +16,7 @@ def get_data(id, student_info):
     }
     url = "http://csujwc.its.csu.edu.cn/jiaowu/pkgl/llsykb/llsykb_kb.jsp"
     req = requests.post(url, data=data)
-    class_info = student_info
+    class_info = student_info.copy()
     class_info["semester"] = semester
     soup = BeautifulSoup(req.text, "html.parser")
     for week_day in range(1, 8):
@@ -107,5 +105,5 @@ def get_photo(class_info_table):
     return buff.getvalue()
 
 
-def get_photo_bytes(id, student_info):
-    return get_photo(get_table(get_data(id, student_info)))
+def get_photo_bytes(id, student_info, semester):
+    return get_photo(get_table(get_data(id, student_info, semester)))
